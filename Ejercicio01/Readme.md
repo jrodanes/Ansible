@@ -25,6 +25,6 @@ Cambio la dirección ip del contenedor para que sea fija
 	- ifdown eth0;ifup eth0
 	
 Meto la ip en el /etc/hosts con el nombre web1
-	- vi /etc/hosts -> 10.218.144.87 r1
+	- sudo vi /etc/hosts -> 10.218.144.87 r1
 
 Genero un playbook que instala Apache y MariaDB en r1
