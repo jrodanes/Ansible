@@ -31,7 +31,6 @@
       package:
         name: firewalld
         state: latest
-        enabled: true
     - name: Habilitar Firewalld
       service:
         name: firewalld
