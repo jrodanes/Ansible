@@ -1,1 +1,1 @@
-Ejercicios Formacion Ansible ThinTick Diciembre 2022
+Ejercicios Formacion Ansible ThinTick Diciembre 2022.
