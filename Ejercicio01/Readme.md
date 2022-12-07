@@ -27,6 +27,18 @@ Cambio la dirección ip del contenedor para que sea fija
 Meto la ip en el /etc/hosts con el nombre web1
 	- sudo vi /etc/hosts -> 10.218.144.87 r1
 
-Genero un playbook que instala Apache y MariaDB en r1 y crea el usuario alumno en Mariadb mediante variables.
+Genero un playbook que realiza las siguientes tareas sobre el inventario [webservers]
+- Declaro como variable mysql_user, mysql_user_password, mysql_user_privileges
+- Creo un handler llamado Flush Privileges que reinicia lanza el comando mysql FLUSH PRIVILEGES
+- Actualizo todos los paquetes mediante dnf
+- Instalo los paquetes de Apache, MariaDB y Python3-PyMySQL (utilizado por ansible para gestionar MariaDB)
+- Arranco el apache sino no lo esta con systemd 
+- Arranco la MariaDB sino no lo esta con systemd  (con service me dio fallo asi que utilice este para los 2 servicios)
+- Instalo Firewalld con packege
+- Arranco Firewalld con service
+- Abro los servicio (puertos) HTTP(80), HTTPS(443) y MySQL(3306) en la zona publica mediante un bucle 
+- Reinicio el Firewalld para habilitar los cambios
+- Copio el fichero index.html al directorio /var/www/html/index.html con usuario, grupo apache y permisos 644
+- Creo el usuario alumno en MySQL y doy todos los permisos en todas las tablas (usuario administrador), llamo al evento Flush Privileges para recargar los permisos del nuevo usuario.
 
 HECHO.
