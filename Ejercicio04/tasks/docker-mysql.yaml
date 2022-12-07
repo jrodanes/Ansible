@@ -1,5 +1,5 @@
 ---
-- hosts: docker
+- hosts: dockers
   tasks:
     - name: Pull an image MySQL
       community.docker.docker_image:
