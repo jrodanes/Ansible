@@ -5,7 +5,7 @@ Primero preparamos un contenedor que nos permita correr docker (activamos nestin
  - lxc profile set docker linux.kernel_modules "overlay, nf_nat, br_netfilter"
  Arrancamos un contenedor con el perfil docker
  - lxc launch Ubuntu2004SSH prueba-docker -p default -p docker
- - vi /etc/hosts -> 10.218.144.230 docker
+ - vi /etc/hosts -> 10.218.144.230 prueba-docker
 
 Al ejecutar el playbook main.yaml
  - Sale un mensaje en pantalla con Ejercicio04
