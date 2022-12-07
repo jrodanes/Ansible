@@ -1,0 +1,39 @@
+----
+- hosts: docker
+  tasks:
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+    - name: Pull an image MySQL
+      community.docker.docker_image:
+        name: mysql:latest
+        source: pull
+    - name: Create a volume para el MySQL
+      community.docker.docker_volume:
+        name: mysql-data-volume
+    - name: deploy mysql docker container with volume and ports
+      community.docker.docker_container:
+        image: mysql:latest
+        name: mysql
+        state: started
+        restart: yes
+        ports:
+          - "3306:3306"
+        volumes:
+          - "mysql-data-volume:/var/lib/mysql:rw"
+        env:
+          MYSQL_ROOT_PASSWORD: alumno   
+    - name: destroy nginx docker container
+      community.docker.docker_container:
+        name: mysql
+        state: absent
+    - name: destroy a volume
+      community.docker.docker_volume:
+        name: mysql-data-volume
+        state: absent
+    - name: destroy image nginx
+      community.docker.docker_image:
+        name: mysql:latest
+        state: absent
+    
+...
