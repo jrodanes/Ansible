@@ -33,7 +33,7 @@
       package:
         name: firewalld
         state: latest
-     - name: Habilitar Firewalld
+    - name: Habilitar Firewalld
       service:
         name: firewalld
         state: started
