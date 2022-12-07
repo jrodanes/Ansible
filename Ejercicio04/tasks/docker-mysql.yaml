@@ -20,7 +20,7 @@
           - "mysql-data-volume:/var/lib/mysql:rw"
         env:
           MYSQL_ROOT_PASSWORD: alumno   
-    - name: destroy nginx docker container
+    - name: destroy mysql docker container
       community.docker.docker_container:
         name: mysql
         state: absent
@@ -28,7 +28,7 @@
       community.docker.docker_volume:
         name: mysql-data-volume
         state: absent
-    - name: destroy image nginx
+    - name: destroy image mysql
       community.docker.docker_image:
         name: mysql:latest
         state: absent   
