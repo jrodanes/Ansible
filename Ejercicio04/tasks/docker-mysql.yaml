@@ -1,4 +1,4 @@
-----
+---
 - hosts: docker
   tasks:
     - name: Pull an image MySQL
