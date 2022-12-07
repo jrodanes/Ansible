@@ -52,7 +52,7 @@
         state: restarted
         enabled: true
     - name: Copia el fichero index.html
-      copy:
+      template:
           src: ../templates/index.html.j2
           dest: /var/www/html/index.html
           owner: apache
