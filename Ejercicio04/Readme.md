@@ -27,7 +27,7 @@ Se ejecuta el playbook docker-mysql.yaml que realiza las siguientes tareas,
  - Crea un volumen de docker llamado mysql-data
  - Crea un contenedor con la imagen descargada de mysql, se mapea el volumen creado anteriormente al la ruta /var/lib/mysql con permisos de rw y habilita el puerto 3306
  - Le pasamos como variable de entorno la password de root.
- - Desruimos el contenedor
+ - Destruimos el contenedor
  - Destruimos el volumen
 
 HECHO.
