@@ -8,6 +8,7 @@ Primero preparamos un contenedor que nos permita correr docker (activamos nestin
  - vi /etc/hosts -> 10.218.144.230 docker
 
 Al ejecutar el playbook main.yaml
+ - Sale un mensaje en pantalla con Ejercicio04
 
 Se ejecuta el playbook servicio_docker.yaml que realiza las siguientes tareas del inventario dockers,
  - Elimina los paquetes de Docker
