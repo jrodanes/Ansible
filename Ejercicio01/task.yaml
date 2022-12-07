@@ -1,0 +1,74 @@
+--- 
+- name: Instalacion de Apache y MariaDB
+  hosts: webservers
+  vars:
+   - mysql_user: "alumno"
+   - mysql_user_password: "alumno"
+   - mysql_user_privileges: "*.*:ALL"
+  handlers:
+    - name: Flush Privileges
+      command: mysql -u root -e "FLUSH PRIVILEGES"
+  tasks:
+    - name: Actualizando paquetes
+      dnf:
+        name: "*"
+        state: latest
+    - name: Instalando apache y mariadb
+      dnf:
+        name:
+          - httpd
+          - mariadb-server
+          - python3-PyMySQL
+        state: latest
+    - name: Arrancar apache
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+    - name: Arrancar MariaDB
+      systemd:
+        name: mariadb
+        state: started
+    - name: Instalar Firewalld
+      package:
+        name: firewalld
+        state: latest
+        enabled: true
+    - name: Habilitar Firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+    - name: Abrir HTTP/S y MySQL
+      firewalld:
+        zone: public
+        permanent: yes
+        service: "{{ item }}"
+        state: enabled
+      with_items:
+        - http
+        - https
+        - mysql
+    - name: Reinciar firewalld
+      service:
+        name: firewalld
+        state: restarted
+        enabled: true
+    - name: Copia el fichero index.html
+      copy:
+          src: index.html
+          dest: /var/www/html/index.html
+          owner: apache
+          group: apache
+          mode: '0644'
+    - name: Crear Usuario
+      mysql_user:
+        name: "{{ mysql_user }}"
+        password: "{{ mysql_user_password }}"
+        priv: "{{ mysql_user_privileges }}"
+        login_user: root
+        state: present
+      notify: Flush Privileges
+...
+
+
