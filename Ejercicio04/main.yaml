@@ -1,0 +1,11 @@
+----
+- hosts: docker
+  tasks:
+    - debug:
+        msg: Ejercicio04
+- name: Deploy Servicio Dcoker
+  import_playbook: tasks/servicio_docker.yaml
+- name: Deploy Contenedor con mysql
+  import_playbook: tasks/docker-mysql.yaml
+
+...
