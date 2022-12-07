@@ -28,3 +28,5 @@ Meto la ip en el /etc/hosts con el nombre web1
 	- sudo vi /etc/hosts -> 10.218.144.87 r1
 
 Genero un playbook que instala Apache y MariaDB en r1 y crea el usuario alumno en Mariadb mediante variables.
+
+HECHO.
