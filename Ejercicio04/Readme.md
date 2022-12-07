@@ -8,6 +8,7 @@ Primero preparamos un contenedor que nos permita correr docker (activamos nestin
  - vi /etc/hosts -> 10.218.144.230 docker
 
 Al ejecutar el playbook main.yaml
+
 Se ejecuta el playbook servicio_docker.yaml que realiza las siguientes tareas del inventario dockers,
  - Elimina los paquetes de Docker
  - Instala el paquete aptitude
@@ -20,6 +21,7 @@ Se ejecuta el playbook servicio_docker.yaml que realiza las siguientes tareas de
  - Instalamos el modulo de Docker en Python (mediante pip)
  - Verificamos si existe el grupo docker y sino lo crea
  - Verificamos que el usuario alumno pertenece al grupo docker sino lo añade.
+
 Se ejecuta el playbook docker-mysql.yaml que realiza las siguientes tareas,
  - Se descarga la ultima imagen de MySQL del repositorio de DockerHub
  - Crea un volumen de docker llamado mysql-data
