@@ -1,9 +1,6 @@
 ----
 - hosts: docker
   tasks:
-    - name: Install Docker Module for Python
-      pip:
-        name: docker
     - name: Pull an image MySQL
       community.docker.docker_image:
         name: mysql:latest
@@ -34,6 +31,6 @@
     - name: destroy image nginx
       community.docker.docker_image:
         name: mysql:latest
-        state: absent
-    
+        state: absent   
+
 ...
