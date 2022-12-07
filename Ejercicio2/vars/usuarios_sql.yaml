@@ -1,0 +1,3 @@
+mysql_user: "alumno"
+mysql_user_password: "alumno"
+mysql_user_privileges: "*.*:ALL"
